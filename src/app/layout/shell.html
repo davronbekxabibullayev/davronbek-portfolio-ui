@@ -1,0 +1,38 @@
+<a class="skip-link" href="#main">{{ 'nav.skip' | transloco }}</a>
+
+<header class="header">
+  <div class="wrap header__inner">
+    <a class="logo" [routerLink]="['/', lang()]">davronbek<span>.dev</span></a>
+
+    <nav class="nav" [attr.aria-label]="'nav.main' | transloco">
+      <a [routerLink]="['/', lang()]" fragment="about">{{ 'nav.about' | transloco }}</a>
+      <a [routerLink]="['/', lang()]" fragment="experience">{{ 'nav.experience' | transloco }}</a>
+      <a [routerLink]="['/', lang()]" fragment="projects">{{ 'nav.projects' | transloco }}</a>
+      <a [routerLink]="['/', lang(), 'blog']">{{ 'nav.blog' | transloco }}</a>
+      <a [routerLink]="['/', lang()]" fragment="contact">{{ 'nav.contact' | transloco }}</a>
+    </nav>
+
+    <div class="lang-switch" role="group" [attr.aria-label]="'nav.language' | transloco">
+      @for (l of langs; track l) {
+        <a
+          [routerLink]="langLinks()[l]"
+          [class.active]="l === lang()"
+          [attr.aria-current]="l === lang() ? 'true' : null"
+          [attr.hreflang]="l"
+          >{{ labels[l] }}</a
+        >
+      }
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <router-outlet />
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner mono">
+    <span>© {{ year }} Davronbek Xabibullayev</span>
+    <span>{{ 'footer.builtWith' | transloco }}</span>
+  </div>
+</footer>

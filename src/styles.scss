@@ -1,0 +1,263 @@
+/* Design tokens — mirror the "Davronbek Portfolio — Design" prototype. */
+:root {
+  --bg: #0e1014;
+  --surface: #14171e;
+  --surface-2: #151820;
+  --line: #1e222b;
+  --border: #232834;
+  --border-strong: #343a48;
+
+  --text: #c9cdd6;
+  --text-strong: #f1f2f5;
+  --muted: #9aa0ac;
+
+  --accent: #b4a2ff; /* text/links on dark */
+  --accent-strong: #6a4cf0; /* filled buttons (white text passes AA) */
+  --success: #8fd6a8;
+  --danger: #ff9b9b;
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --radius: 14px;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px; /* sticky header */
+
+  @media (max-width: 860px) {
+    scroll-padding-top: 132px;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+
+  &:hover {
+    color: #d5cbff;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.display {
+  font-family: var(--font-display);
+}
+
+.section {
+  border-top: 1px solid var(--line);
+  padding: 96px 0;
+
+  @media (max-width: 760px) {
+    padding: 64px 0;
+  }
+}
+
+.label {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 600;
+  color: var(--text-strong);
+
+  @media (max-width: 760px) {
+    font-size: 30px;
+  }
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid #2a2f3a;
+  border-radius: 6px;
+  background: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  font: 600 15px/1 var(--font-body);
+  cursor: pointer;
+
+  &--primary {
+    background: var(--accent-strong);
+    color: #fff;
+
+    &:hover {
+      background: #5a3de0;
+      color: #fff;
+    }
+  }
+
+  &--ghost {
+    border-color: var(--border-strong);
+    background: transparent;
+    color: #e6e8ee;
+
+    &:hover {
+      border-color: var(--accent-strong);
+      color: #fff;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: progress;
+  }
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+}
+
+/* Rendered Markdown (case studies, blog posts) */
+.prose {
+  color: var(--text);
+  font-size: 17px;
+
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    color: var(--text-strong);
+    line-height: 1.2;
+    margin: 2em 0 0.6em;
+  }
+
+  p,
+  ul,
+  ol {
+    margin: 0 0 1em;
+  }
+
+  li + li {
+    margin-top: 0.4em;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--surface-2);
+    border: 1px solid #2a2f3a;
+    border-radius: 6px;
+    padding: 0.1em 0.35em;
+  }
+
+  pre {
+    overflow-x: auto;
+    padding: 18px;
+    border-radius: 12px;
+    background: #0a0c10;
+    border: 1px solid var(--border);
+
+    code {
+      background: none;
+      border: 0;
+      padding: 0;
+    }
+  }
+
+  blockquote {
+    margin: 0 0 1em;
+    padding-left: 16px;
+    border-left: 3px solid var(--accent-strong);
+    color: var(--muted);
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.placeholder {
+  border: 1px dashed #3a4050;
+  border-radius: 12px;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}

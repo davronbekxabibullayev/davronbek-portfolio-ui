@@ -1,0 +1,116 @@
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 10;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--accent-strong);
+  color: #fff;
+
+  &:focus {
+    top: 12px;
+  }
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgb(14 16 20 / 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 16px;
+  min-height: 68px;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-strong);
+
+  span {
+    color: var(--accent);
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 28px;
+
+  a {
+    color: var(--text);
+    font-size: 15px;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  /* Phones: nav drops to its own scrollable row under the logo. */
+  @media (max-width: 860px) {
+    order: 3;
+    width: 100%;
+    gap: 22px;
+    overflow-x: auto;
+    padding: 4px 0 12px;
+    scrollbar-width: none;
+
+    a {
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+    }
+  }
+}
+
+.lang-switch {
+  display: flex;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    color: var(--muted);
+
+    &:hover {
+      color: #fff;
+    }
+
+    &.active {
+      border-color: var(--accent-strong);
+      background: #1d1838;
+      color: #fff;
+    }
+  }
+}
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 32px 0;
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
